@@ -18,10 +18,14 @@ unsigned long PreviousMillis = 0;
 long TournStartInterval = 5000;
 
 //char value used to get the on/off/change values command from the serial monitor
-char Response = ' ';
+String Response = "";
+
+char ResponseChar[256];
 
 //char array to change the values of the resting PWM value and the start to resting interval
 char ValueChanger[256];
+
+char * key;
 
 
 int TournPin = 3;
@@ -49,12 +53,16 @@ void loop() {
   while(Serial.available() > 0)
   {
     //Get the character inputted through the serial monitor
-    Response = Serial.read();
+    Response = Serial.readString();
+
+    Response.toCharArray(ResponseChar, 256);
+
+    key = strstr(ResponseChar, ":");
 
     //Reprint the character for validation
     Serial.print(Response);
 
-    if(Response == 'O')
+    if(Response.compareTo("O") == 0)
     {
       //Check to see if the tourniquet is already on
       if(TourniquetOn == 1)
@@ -68,7 +76,7 @@ void loop() {
       }
       
     }
-    else if(Response == 'I')
+    else if(Response.compareTo("I") == 0)
     {
       //Check to see if the tourniquet is on
       if(TourniquetOn == 1)
@@ -82,8 +90,9 @@ void loop() {
       }
 
     }
-    else if(Response == 'C')
+    else if(key == ':')
     {
+      Response.toCharArray(ValueChanger, 256);
       ChangeValues();
     }
 
@@ -159,14 +168,6 @@ void PowerOffTourniquet()
 void ChangeValues()
 {
   char *token;
-  
-  while(Serial.available() > 0)
-  {
-    String Input = Serial.readString();
-
-    Input.toCharArray(ValueChanger, 256);
-    
-  }
 
   token = strtok(ValueChanger, ":");
 
