@@ -160,7 +160,7 @@ void ChangeValues()
 {
   char *token;
   
-  while(Serial.available())
+  while(Serial.available() > 0)
   {
     String Input = Serial.readString();
 
