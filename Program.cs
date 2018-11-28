@@ -97,17 +97,14 @@ namespace BluetoothForTourniquet
                     if(SendData.Contains(":"))
                     {
                         serial.Write(SendData);
-                        break;
                     }
                     else if(SendData == "I")
                     {
                         serial.Write(SendData);
-                        break;
                     }
                     else if(SendData == "O")
                     {
                         serial.Write(SendData);
-                        break;
                     }
                     else if (SendData == "E")
                     {
