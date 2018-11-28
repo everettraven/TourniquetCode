@@ -97,7 +97,7 @@ void loop() {
 //Function to turn on the tourniquet
 void PowerOnTourniquet()
 {
-  Serial.write("Tourniquet On");
+  Serial.print("Tourniquet On");
   
   digitalWrite(LedPin, HIGH);
 
@@ -142,7 +142,7 @@ void PowerOnTourniquet()
 
 void PowerOffTourniquet()
 {
-  Serial.write("Serial Off");
+  Serial.print("Serial Off");
   
   digitalWrite(LedPin, LOW);
 
@@ -176,7 +176,7 @@ void ChangeValues()
 
   TournStartInterval = atoi(token);
 
-  Serial.write("Data Recieved");
+  Serial.print("Data Recieved");
 
   
 }

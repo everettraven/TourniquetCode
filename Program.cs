@@ -115,10 +115,12 @@ namespace BluetoothForTourniquet
                         Console.Write("That input is invalid");
                     }
 
+                    serial.DataReceived += new SerialDataReceivedEventHandler(Serial_DataReceived);
+
                 }
 
 
-               serial.DataReceived += new SerialDataReceivedEventHandler(Serial_DataReceived);
+
 
 
                 Console.WriteLine("Press any key to quit");
