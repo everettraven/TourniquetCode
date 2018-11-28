@@ -21,7 +21,7 @@ long TournStartInterval = 5000;
 char Response = ' ';
 
 //char array to change the values of the resting PWM value and the start to resting interval
-char ValueChanger[];
+char ValueChanger[256];
 
 
 int TournPin = 3;
@@ -162,7 +162,10 @@ void ChangeValues()
   
   while(Serial.available())
   {
-    ValueChanger = Serial.readString();
+    String Input = Serial.readString();
+
+    Input.toCharArray(ValueChanger, 256);
+    
   }
 
   token = strtok(ValueChanger, ":");
