@@ -90,7 +90,7 @@ void loop() {
       }
 
     }
-    else if(key == ':')
+    else if(strcmp(key, ":") != NULL)
     {
       Response.toCharArray(ValueChanger, 256);
       ChangeValues();
@@ -151,7 +151,7 @@ void PowerOnTourniquet()
 
 void PowerOffTourniquet()
 {
-  Serial.print("Serial Off");
+  Serial.print("Tourniquet Off");
   
   digitalWrite(LedPin, LOW);
 

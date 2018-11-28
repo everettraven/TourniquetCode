@@ -91,7 +91,7 @@ namespace BluetoothForTourniquet
 
                 while (true)
                 {
-                    Console.WriteLine("Type the command you would like to run. I (capital i) = Turn on, O = Turn off, E = exit, to change PWM and interval value do as follows -------------> PWMValue:Interval");
+                    Console.WriteLine("Type the command you would like to run. O = Turn on, I (capital i) = Turn off, E = exit, to change PWM and interval value do as follows -------------> PWMValue:Interval");
                     string SendData = Console.ReadLine();
 
                     if(SendData.Contains(":"))
